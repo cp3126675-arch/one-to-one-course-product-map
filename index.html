@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>一对一课程产品 · 研发总图</title>
+  <style>
+    :root{--ink:#252d2a;--muted:#69736e;--line:#dce2de;--green:#27634c;--green-soft:#edf5ef;--blue:#315f83;--blue-soft:#edf3f8;--amber:#8b642c;--root-w:182px;--topic-w:236px;--gap:64px}
+    *{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:15px/1.6 "PingFang SC","Microsoft YaHei",system-ui,sans-serif;letter-spacing:0}button{font:inherit;color:inherit;cursor:pointer}button,a,summary{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #7a9db6;outline-offset:4px}[hidden]{display:none!important}h1,h2,h3,p,ol,ul{margin:0;padding:0}ol,ul{list-style:none}a{color:var(--blue);text-underline-offset:3px;overflow-wrap:anywhere}svg{display:block}.shell{max-width:1440px;margin:auto;padding:0 44px}.muted{color:var(--muted)}
+    .masthead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:30px 0 25px}.eyebrow{font-size:12px;color:var(--muted);margin-bottom:6px}h1{font-size:28px;line-height:1.4;font-weight:650}.direction{font-size:14px;color:var(--muted);margin-top:9px}.document-note{max-width:255px;text-align:right;font-size:12px;color:var(--muted);padding-top:6px}.document-note strong{display:block;color:var(--green);font-weight:500;margin-bottom:5px}
+    .roadmap{border-bottom:1px solid var(--line);padding-bottom:20px}.roadmap-heading{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px;font-size:12px;color:var(--muted)}.mainline{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}.mainline li{min-width:0;position:relative}.mainline li:not(:last-child):after{content:"";position:absolute;right:-12px;top:38px;width:7px;height:7px;border-right:1px solid #a9b4ad;border-top:1px solid #a9b4ad;transform:rotate(45deg)}.stage-button{width:100%;min-height:100px;border:0;border-radius:5px;background:transparent;text-align:left;padding:10px 12px;display:flex;flex-direction:column;gap:5px}.stage-button:hover{background:#f5f7f5}.stage-button[aria-current=step]{background:var(--green-soft)}.stage-num{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}.stage-label{font-size:16px;font-weight:550;line-height:1.5;overflow-wrap:anywhere}.stage-question{font-size:12px;line-height:1.5;color:var(--muted);overflow-wrap:anywhere}
+    .production-method{border-bottom:1px solid var(--line)}summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}.method-summary{display:flex;align-items:center;gap:18px;padding:15px 0;font-size:13px}.method-label{color:var(--amber);font-weight:500;flex-shrink:0}.method-flow{color:var(--muted);flex:1;overflow-wrap:anywhere}.chevron{width:17px;height:17px;flex:0 0 17px;color:#7d8e82;transition:transform .12s}details[open]>summary .chevron{transform:rotate(90deg)}.method-body{padding:3px 0 21px}.method-title{font-size:16px;font-weight:550;margin-bottom:17px}.method-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}.method-step{padding-left:14px;border-left:2px solid #dfd3bd;min-width:0}.method-step strong{font-weight:550;font-size:14px;display:block;margin-bottom:5px}.method-step p{font-size:13px;color:var(--muted);line-height:1.8}.method-example{font-size:13px;line-height:1.9;margin-top:20px;max-width:1080px}.method-boundary{font-size:12px;color:var(--muted);margin-top:8px}
+    .stage-panel{padding:25px 0 24px}.stage-heading{display:flex;justify-content:space-between;gap:26px;align-items:flex-start}.stage-kicker{font-size:12px;color:var(--muted);margin-bottom:4px}.stage-heading h2{font-size:22px;line-height:1.5;font-weight:600}.stage-purpose{font-size:14px;color:var(--muted);margin-top:6px}.stage-deliverable{border-left:2px solid var(--line);padding-left:16px;min-width:215px;max-width:320px;margin-top:4px}.stage-deliverable span{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}.stage-deliverable strong{font-size:14px;font-weight:500;overflow-wrap:anywhere}
+    .map{position:relative;display:grid;grid-template-columns:var(--root-w) var(--topic-w) minmax(0,1fr);column-gap:var(--gap);align-items:center;isolation:isolate;margin:25px 4px 22px;min-height:340px;padding:20px 0}.connections{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}.connections path{fill:none;stroke:#c9d4cb;stroke-width:1.5;stroke-linecap:round}.connections .selected-edge{stroke:#6b8f7b;stroke-width:1.7}.origin{padding:18px 16px;border-left:3px solid var(--green);background:var(--green-soft);border-radius:0 5px 5px 0;min-width:0}.origin span{font-size:12px;color:var(--green);display:block;margin-bottom:6px}.origin strong{display:block;font-size:18px;line-height:1.5;font-weight:600}.topics{grid-column:2;display:grid;gap:20px}.topic-item{position:relative;min-width:0}.topic-button{width:100%;min-height:64px;border:1px solid var(--line);border-radius:5px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:14px 16px}.topic-button:hover{background:#fafcf9;border-color:#b2c6b9}.topic-button[aria-expanded=true]{background:var(--green-soft);border-color:#8eaf9b}.topic-button strong{font-size:15px;font-weight:550;overflow-wrap:anywhere}.topic-button[aria-expanded=true] .chevron{transform:rotate(90deg);color:var(--green)}.questions{position:absolute;left:calc(100% + var(--gap));width:var(--questions-w,300px);top:var(--questions-top,0);display:grid;gap:14px}.question-button{width:100%;min-height:58px;border:0;border-bottom:1px solid var(--line);border-left:2px solid #d8e1da;background:#fff;border-radius:0;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:11px 0 11px 13px}.question-button:hover{border-left-color:#7d9a88;background:#fafcfb}.question-button[aria-expanded=true]{border-left-color:var(--blue);background:var(--blue-soft);border-bottom-color:transparent}.question-button span{font-size:15px;line-height:1.65;overflow-wrap:anywhere}.question-dot{height:5px;width:5px;flex:0 0 5px;background:#97aca0;border-radius:50%;margin-right:12px}.question-button[aria-expanded=true] .question-dot{background:var(--blue)}.outcome-preview{grid-column:3;grid-row:1;padding:9px 0 9px 20px;border-left:1px solid var(--line);margin-left:5px}.outcome-preview .minor{font-size:12px;color:var(--muted);margin-bottom:8px}.outcome-preview p{font-size:16px;line-height:1.8;max-width:320px}
+    .decision-guide{border-top:1px solid var(--line);padding:18px 0 3px}.guide-heading{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:15px}.guide-heading h3{font-size:17px;font-weight:550;line-height:1.6}.question-kind{font-size:12px;color:var(--muted);padding-left:12px;border-left:1px solid var(--line)}.guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.guide-item span{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.guide-item p{font-size:14px;line-height:1.85;overflow-wrap:anywhere}.guide-related{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 18px;margin-top:15px;font-size:12px}.guide-related>span{color:var(--muted)}.guide-related a{max-width:100%}.exit-line{display:flex;align-items:baseline;gap:14px;padding-top:18px;margin-top:12px;border-top:1px solid var(--line)}.exit-line span{font-size:12px;color:var(--muted);white-space:nowrap}.exit-line p{font-size:13px;color:#4a6254;line-height:1.85}
+    .discussion-locator{border-top:1px solid var(--line)}.locator-summary{display:flex;align-items:center;gap:16px;font-size:14px;padding:17px 0}.locator-summary>span:first-child{font-weight:550}.locator-summary .minor{font-size:12px;color:var(--muted);flex:1}.discussion-intro{font-size:13px;line-height:1.85;color:var(--muted);margin:0 0 16px}.discussion-table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.85;margin-bottom:22px;table-layout:fixed}.discussion-table th{text-align:left;color:var(--muted);font-size:12px;font-weight:500;border-bottom:1px solid #cbd6ce;padding:10px 16px 10px 0}.discussion-table th:nth-child(1){width:25%}.discussion-table th:nth-child(2){width:48%}.discussion-table th:nth-child(3){width:27%}.discussion-table td{vertical-align:top;border-bottom:1px solid var(--line);padding:15px 20px 15px 0;overflow-wrap:anywhere}.discussion-topic{font-weight:500}.discussion-date{display:block;font-size:11px;color:var(--muted);margin-top:4px}.discussion-nature{display:block;font-size:11px;color:var(--amber);margin-bottom:4px}.discussion-links a{display:block;margin-bottom:4px}.discussion-outside{color:var(--muted);font-size:12px}.footer{border-top:1px solid var(--line);padding:16px 0 24px;color:var(--muted);font-size:12px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(min-width:820px){.map.is-dense .topics{gap:16px}.map.is-dense .topic-button{min-height:58px;padding:12px 16px}}
+    @media(min-width:1400px){.map{--root-w:200px;--topic-w:270px;--gap:80px}}
+    @media(max-width:1100px){.shell{padding:0 28px}:root{--root-w:154px;--topic-w:210px;--gap:38px}.mainline{gap:12px}.mainline li:not(:last-child):after{right:-8px;width:5px;height:5px}.stage-button{padding:10px}.stage-label{font-size:15px}.stage-deliverable{min-width:190px}.document-note{max-width:220px}}
+    @media(max-width:819px){.shell{padding:0 22px}.masthead{padding:24px 0 20px}.document-note{display:none}h1{font-size:25px}.direction{font-size:13px}.roadmap-heading{font-size:11px}.roadmap-heading>span:last-child{display:none}.mainline{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 15px}.stage-button{min-height:94px;padding:9px;gap:4px}.mainline li:not(:last-child):after{right:-9px;top:37px}.mainline li:nth-child(3n):after{display:none}.stage-label{font-size:14px}.stage-question{font-size:11px}.roadmap{padding-bottom:17px}.method-summary{gap:12px;flex-wrap:wrap;padding:13px 0}.method-label{font-size:12px}.method-flow{flex:1 1 180px;font-size:12px}.method-summary .chevron{margin-left:auto}.method-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.method-example{font-size:13px}.stage-panel{padding-top:21px}.stage-heading{display:block}.stage-heading h2{font-size:22px}.stage-deliverable{min-width:0;max-width:none;display:flex;gap:12px;align-items:baseline;margin-top:16px;padding-left:12px}.stage-deliverable span{white-space:nowrap;margin:0}.stage-deliverable strong{font-size:13px}.map{display:block;min-height:0;margin:22px 0 20px;padding:0}.connections{display:none}.origin{padding:10px 14px;margin-bottom:19px;max-width:310px}.origin span{font-size:11px;margin-bottom:2px}.origin strong{font-size:16px}.topics{display:block;margin-left:14px;padding-left:20px;border-left:1px solid #cdd9d0}.topic-item{margin-bottom:15px}.topic-item:last-child{margin-bottom:0}.topic-item:before{content:"";position:absolute;left:-21px;top:31px;width:20px;height:1px;background:#cdd9d0}.topic-button{min-height:60px;padding:13px 15px}.questions{position:static;width:auto;margin:14px 0 20px 14px;padding-left:16px;border-left:1px solid #d9e3dc;gap:10px}.question-button{min-height:58px;padding:10px 0 10px 11px}.question-button span{font-size:14px}.outcome-preview{margin:23px 0 0 14px;padding:9px 0 9px 20px}.outcome-preview p{font-size:14px;max-width:none}.guide-grid{grid-template-columns:1fr;gap:14px}.questions .decision-guide{margin:4px 0 12px;padding:10px 0 0;border-top:0}.questions .guide-heading{margin-bottom:12px}.questions .guide-heading h3{display:none}.questions .question-kind{border:0;padding:0;font-size:11px}.guide-item p{font-size:13px}.guide-item span{font-size:11px}.exit-line{gap:12px}.locator-summary{flex-wrap:wrap;gap:5px 12px}.locator-summary .minor{flex:1 1 180px;font-size:11px}.discussion-table,.discussion-table tbody,.discussion-table tr,.discussion-table td{display:block;width:100%}.discussion-table thead{display:none}.discussion-table tr{padding:16px 0;border-bottom:1px solid var(--line)}.discussion-table td{border:0;padding:0 0 9px}.discussion-table td:last-child{padding-bottom:0}.discussion-table .discussion-date{margin-top:2px}.footer{font-size:11px}}
+    @media(max-width:819px){.method-summary,.locator-summary{display:grid;grid-template-columns:auto minmax(0,1fr) 17px;gap:12px}.method-flow,.locator-summary .minor{min-width:0}.method-summary>.chevron,.locator-summary>.chevron{margin:0}}
+    @media(max-width:380px){.shell{padding:0 16px}.mainline{gap:8px 12px}.stage-button{padding:8px 6px}.stage-label{font-size:13px}.stage-heading h2{font-size:21px}.topic-button{padding:12px}.method-summary,.locator-summary{grid-template-columns:minmax(0,1fr) 17px;gap:5px 12px}.method-label,.method-flow,.locator-summary>span{grid-column:1}.method-summary>.chevron,.locator-summary>.chevron{grid-column:2;grid-row:1/3}.method-steps{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+    @media print{@page{size:A4 landscape;margin:12mm}.shell{max-width:none;padding:0}.masthead{padding:0 0 12px}h1{font-size:22px}.document-note,.roadmap-heading>span:last-child{display:none}.stage-button{min-height:74px;padding:6px;print-color-adjust:exact;-webkit-print-color-adjust:exact}.stage-label{font-size:13px}.stage-question{font-size:10px}.roadmap{padding-bottom:10px}.method-summary{padding:10px 0}.stage-panel{padding:15px 0}.stage-heading h2{font-size:19px}.map{--root-w:145px;--topic-w:190px;--gap:42px;min-height:280px;margin-top:16px}.topics{gap:12px}.topic-button,.map.is-dense .topic-button{min-height:49px;padding:10px}.topic-button strong,.question-button span{font-size:12px}.question-button{min-height:46px}.origin{print-color-adjust:exact;-webkit-print-color-adjust:exact}.decision-guide,.exit-line,.method-step,.discussion-table tr{break-inside:avoid}.guide-item p{font-size:12px}.footer{padding-bottom:0}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <div><p class="eyebrow">产品研发 · 讨论总图</p><h1>一对一课程产品</h1><p class="direction">弄清产品如何成立，在完整样板中试做、验证与修正。</p></div>
+      <p class="document-note"><strong>顾客价值 × 可行课程 × 可复用资料</strong>产品问题、研制方法与验证依据分开讨论</p>
+    </header>
+    <nav class="roadmap" aria-label="产品设计问题主线">
+      <p class="roadmap-heading"><span>产品设计的逻辑主线</span><span>不是研发排期，各部分会往返修正</span></p>
+      <ol class="mainline" id="mainline"></ol>
+    </nav>
+    <details class="production-method" id="production-method">
+      <summary class="method-summary"><span class="method-label">伴随每次样板制作</span><span class="method-flow" id="method-flow"></span><span data-chevron></span></summary>
+      <div class="method-body"><h2 class="method-title" id="method-title"></h2><ol class="method-steps" id="method-steps"></ol><p class="method-example" id="method-example"></p><p class="method-boundary" id="method-boundary"></p></div>
+    </details>
+    <main>
+      <section class="stage-panel" aria-labelledby="stage-title">
+        <header class="stage-heading"><div><p class="stage-kicker" id="stage-kicker"></p><h2 id="stage-title"></h2><p class="stage-purpose" id="stage-purpose"></p></div><div class="stage-deliverable"><span>要形成</span><strong id="stage-deliverable"></strong></div></header>
+        <div class="map" id="map" aria-label="当前设计问题的分支">
+          <svg class="connections" id="connections" aria-hidden="true"></svg>
+          <div class="origin" id="origin"><span id="origin-step"></span><strong id="origin-title"></strong></div>
+          <ul class="topics" id="topics"></ul>
+          <div class="outcome-preview" id="outcome-preview"><p class="minor">要弄清的画面</p><p id="stage-scene"></p></div>
+        </div>
+        <div id="guide-home"><section class="decision-guide" id="decision-guide" aria-labelledby="question-title" hidden>
+          <header class="guide-heading"><h3 id="question-title"></h3><span class="question-kind" id="question-kind"></span></header>
+          <div class="guide-grid"><div class="guide-item"><span>要想清楚</span><p id="question-aim"></p></div><div class="guide-item"><span>看什么依据</span><p id="question-evidence"></p></div><div class="guide-item"><span>形成什么判断</span><p id="question-decision"></p></div></div>
+          <p class="guide-related" id="guide-related" hidden></p>
+        </section></div>
+        <div class="exit-line"><span>判断落点</span><p id="stage-exit"></p></div>
+      </section>
+      <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+    </main>
+    <details class="discussion-locator" id="discussion-locator">
+      <summary class="locator-summary"><span>两次会议的讨论定位</span><span class="minor">价值认识 / 产品设计 / 研制与验证 / 图外事项</span><span data-chevron></span></summary>
+      <p class="discussion-intro">先判断讨论的对象与性质，再决定它应修正哪项设计；不是把每条意见都新增为产品需求。</p>
+      <table class="discussion-table"><thead><tr><th scope="col">会议议题</th><th scope="col">实际在讨论什么</th><th scope="col">对应位置</th></tr></thead><tbody id="discussion-rows"></tbody></table>
+    </details>
+    <footer class="footer">分支是待回答的产品问题，不是功能清单。规则在试做中形成，结论依据真实使用持续修正。</footer>
+  </div>
+  <noscript><p>此文件需要启用JavaScript才能展开问题分支。</p></noscript>
+  <script id="project-data" type="application/json">{
+  "schemaVersion": 2,
+  "revision": "2026-11-05-product-logic",
+  "stages": [
+    {
+      "id": "position",
+      "label": "产品定位",
+      "title": "先明确：做哪一种一对一产品",
+      "purpose": "为谁，在什么情况下，优先解决什么问题。",
+      "artifact": "目标顾客、问题与适用范围",
+      "scene": "能区分我们先做的产品与暂时不做的产品。",
+      "exit": "首款产品的对象与主要问题足够具体；范围仍可随证据修正。",
+      "topics": [
+        {
+          "id": "position-who",
+          "label": "先为谁做",
+          "questions": [
+            {
+              "id": "position-fit",
+              "label": "首款产品服务哪类学生与家庭？",
+              "kind": "定位取舍",
+              "aim": "明确学习阶段、基础、目标与可用时间。",
+              "evidence": "真实求助、购买动机与能够接触的样板。",
+              "decision": "形成可识别的目标人群，不同时承接所有需求。"
+            },
+            {
+              "id": "position-category",
+              "label": "先解决补弱、同步、提升，还是阶段备考？",
+              "kind": "定位取舍",
+              "aim": "选择主要任务，允许有依据的组合。",
+              "evidence": "顾客当前困难、学校供给与目标期限。",
+              "decision": "说清主任务及优先级，而非先固定课数或教材目录。"
+            }
+          ]
+        },
+        {
+          "id": "position-problem",
+          "label": "问题与替代",
+          "questions": [
+            {
+              "id": "needs-trigger",
+              "label": "什么具体困难让顾客开始找帮助？",
+              "kind": "需求判断",
+              "aim": "识别触发事件、受影响的人与后果。",
+              "evidence": "考试、学习过程、家庭投入等实际经历。",
+              "decision": "问题有具体场景，不把想要某个功能当作问题本身。"
+            },
+            {
+              "id": "needs-gap",
+              "label": "学校、自学或现有辅导还没有解决什么？",
+              "kind": "需求判断",
+              "aim": "找出现有办法的缺口，也保留其有效部分。",
+              "evidence": "实际使用、投入、困难与继续或退出的原因。",
+              "decision": "明确本产品补充或替代什么，避免重复已有供给。"
+            }
+          ]
+        },
+        {
+          "id": "position-difference",
+          "label": "为什么选我们",
+          "questions": [
+            {
+              "id": "position-why",
+              "label": "顾客为什么不继续用原来的办法？",
+              "kind": "差异判断",
+              "aim": "把选择理由对应到具体困难和期望改变。",
+              "evidence": "顾客真实取舍与替代办法的表现。",
+              "decision": "差异能被顾客理解，而不只是更智能或更个性化。",
+              "related": [
+                "position-main"
+              ]
+            },
+            {
+              "id": "position-unique",
+              "label": "哪些优势依靠产品，而不只依靠某位老师？",
+              "kind": "能力假设",
+              "aim": "区分可设计的课程与支持机制、个人特长和未知依赖。",
+              "evidence": "已有案例、实际机制与换教师后的表现。",
+              "decision": "优势有依据或验证安排，不预设人的作用已经被消除。",
+              "related": [
+                "repeat-delivery"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "position-scope",
+          "label": "范围与约束",
+          "questions": [
+            {
+              "id": "position-no",
+              "label": "哪些情况暂时不适合这款产品？",
+              "kind": "适用边界",
+              "aim": "明确目标、基础、时间及配合条件的限制。",
+              "evidence": "实现方案的必要条件与实际困难案例。",
+              "decision": "有不承接或另行评估的范围，不靠无限加服务兜底。"
+            },
+            {
+              "id": "scope-hard",
+              "label": "哪些资源与现实约束会改变产品选择？",
+              "kind": "成立条件",
+              "aim": "核实题源、图谱、教师能力、课时及资料使用边界。",
+              "evidence": "真实可用资源与已确认的业务约定。",
+              "decision": "明确可控条件、缺项与外部依赖，以及它们对方案的影响。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "value",
+      "label": "价值与画面",
+      "title": "把“顾客觉得值”说清楚",
+      "purpose": "从具体经历细化价值，而不是把抽象口号直接变成功能。",
+      "artifact": "候选价值、具体表现与成功画面",
+      "scene": "能用顾客经历解释：什么改变值得付费、什么表现说明有价值。",
+      "exit": "价值表述有场景支撑；已知、假设与仍需了解的部分分开。",
+      "topics": [
+        {
+          "id": "value-meaning",
+          "label": "究竟为什么觉得值",
+          "questions": [
+            {
+              "id": "position-main",
+              "label": "哪种改变真正让顾客觉得值得付费？",
+              "kind": "价值定义",
+              "aim": "区分顾客要的改变与内部制作效率、技术手段。",
+              "evidence": "实际购买、满意、不满、投入和退出的经历。",
+              "decision": "形成有依据的候选价值，不预设只有固定三项。"
+            },
+            {
+              "id": "value-roles",
+              "label": "家长与学生的价值判断是否一致？",
+              "kind": "价值定义",
+              "aim": "区分付费者的期待、学生的体验及二者的关联。",
+              "evidence": "双方原话、行为与具体分歧。",
+              "decision": "分别表述，不用家长满意代替学生受益。"
+            }
+          ]
+        },
+        {
+          "id": "value-scenes",
+          "label": "当前候选价值的表现",
+          "questions": [
+            {
+              "id": "value-willing",
+              "label": "“愿意学”具体表现在哪些场景？",
+              "kind": "价值表现",
+              "aim": "区分喜欢老师与实际尝试、坚持、主动推进学习。",
+              "evidence": "上课、遇到困难和课后任务中的真实行为。",
+              "decision": "得到具体表现与反例，不仅用一个态度标签判断。",
+              "related": [
+                "mechanism-willing"
+              ]
+            },
+            {
+              "id": "value-relief",
+              "label": "“少操心”究竟减少了家长什么负担？",
+              "kind": "价值表现",
+              "aim": "明确是少催促、少做学习决策，还是更清楚进展。",
+              "evidence": "家长原本承担的事、实际变化与感受。",
+              "decision": "说清负担变化，不把多发汇报等同于更安心。",
+              "related": [
+                "mechanism-trust"
+              ]
+            },
+            {
+              "id": "value-learning",
+              "label": "“学得好”具体指怎样的学习变化？",
+              "kind": "价值表现",
+              "aim": "区分当场完成、独立掌握、保持迁移与考试表现。",
+              "evidence": "匹配目标的作答过程、延后任务和考试结果。",
+              "decision": "价值有可观察的表现，也承认成绩受多种因素影响。",
+              "related": [
+                "mechanism-check"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "value-evidence",
+          "label": "用经历修正价值认识",
+          "questions": [
+            {
+              "id": "needs-stories",
+              "label": "哪些故事说明顾客觉得值、不值或无感？",
+              "kind": "价值研究",
+              "aim": "用具体经历支持或推翻我们对产品价值的理解。",
+              "evidence": "事件、原话、行为及反例；未知感受不代填。",
+              "decision": "细化价值表现或发现新价值，列出仍需验证的价值判断。",
+              "related": [
+                "position-main",
+                "definition-scene"
+              ]
+            },
+            {
+              "id": "needs-change",
+              "label": "不同阶段，顾客在意的价值会怎样变化？",
+              "kind": "价值研究",
+              "aim": "研究价值的侧重与表现是否随学习阶段变化。",
+              "evidence": "前后经历、真实取舍与当事人的确认。",
+              "decision": "修正价值判断及适用条件，不预设所有顾客都会同样变化。",
+              "related": [
+                "definition-confirm"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "value-success",
+          "label": "成功画面与承诺边界",
+          "questions": [
+            {
+              "id": "definition-scene",
+              "label": "每项价值对应什么具体的成功画面？",
+              "kind": "价值具体化",
+              "aim": "写清谁在什么情况下，发生了怎样值得期待的变化。",
+              "evidence": "价值表现、真实场景与目标顾客的判断。",
+              "decision": "画面足以指引产品设计，但不把设想写成已实现。",
+              "related": [
+                "definition-deliver",
+                "prototype-value"
+              ]
+            },
+            {
+              "id": "position-bounds",
+              "label": "什么值得承诺，什么还不能直接承诺？",
+              "kind": "价值边界",
+              "aim": "区分可控制交付与受多因素影响的结果。",
+              "evidence": "能力边界、真实验证与必要条件。",
+              "decision": "承诺有依据，未知和适用条件不被隐藏。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "definition",
+      "label": "产品方案",
+      "title": "把价值变成一份完整产品",
+      "purpose": "决定顾客购买什么、经历什么、付出什么，而不只列材料。",
+      "artifact": "产品组成、交付体验与约定",
+      "scene": "顾客知道买到什么，团队知道需要共同交付什么。",
+      "exit": "方案与核心价值对应，范围、投入和约定足以支持样板试做。",
+      "topics": [
+        {
+          "id": "definition-package",
+          "label": "购买内容",
+          "questions": [
+            {
+              "id": "definition-unit",
+              "label": "这份产品以什么单位提供与结束？",
+              "kind": "产品定义",
+              "aim": "明确周期、阶段目标或模块等组织方式。",
+              "evidence": "问题持续时间、价值出现条件与交付能力。",
+              "decision": "有开始、过程和结束节点，不先默认只卖课时。"
+            },
+            {
+              "id": "definition-deliver",
+              "label": "顾客具体获得哪些内容与服务？",
+              "kind": "产品定义",
+              "aim": "从成功画面推导课程、练习和学习支持的必要组成。",
+              "evidence": "核心价值、完整使用经历与现实交付条件。",
+              "decision": "每项组成有目的；必需、可选与不提供的部分分明。",
+              "related": [
+                "definition-scene"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "definition-journey",
+          "label": "完整交付",
+          "questions": [
+            {
+              "id": "definition-journey-question",
+              "label": "从接手学生到阶段结束，产品怎样完整交付？",
+              "kind": "产品设计",
+              "aim": "串起必要的信息、规划、学习、检查与调整。",
+              "evidence": "真实使用经历与价值实现所需环节。",
+              "decision": "完整经历连贯；已有六步教学闭环作为实现方案检验。"
+            },
+            {
+              "id": "definition-materials",
+              "label": "规划、讲义、作业与反馈分别起什么作用？",
+              "kind": "产品设计",
+              "aim": "明确各项材料与服务如何协同，而不是逐份孤立生产。",
+              "evidence": "学生、教师和家长在交付中的实际任务。",
+              "decision": "交付之间有承接，内部生产资料与顾客收到的内容分开。",
+              "related": [
+                "mechanism-plan-goal",
+                "mechanism-lesson"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "definition-experience",
+          "label": "体验与投入",
+          "questions": [
+            {
+              "id": "definition-load",
+              "label": "学生、教师和家长分别要投入多少精力？",
+              "kind": "产品体验",
+              "aim": "核实学习负担、执行操作与家庭配合是否可承受。",
+              "evidence": "真实时间容量、使用困难与额外劳动。",
+              "decision": "不把内部省下的工作转成顾客或教师的隐性负担。"
+            },
+            {
+              "id": "definition-confirm",
+              "label": "顾客是否理解并接受目标、范围与配合要求？",
+              "kind": "产品约定",
+              "aim": "区分已经告知与真正理解、接受。",
+              "evidence": "复述、异议与实际选择，不以沉默代替同意。",
+              "decision": "确认或分歧有依据，不能只按发送过通知判断。"
+            }
+          ]
+        },
+        {
+          "id": "definition-terms",
+          "label": "价格与服务边界",
+          "questions": [
+            {
+              "id": "definition-price",
+              "label": "价格、提供范围与真实成本怎样对应？",
+              "kind": "经营成立条件",
+              "aim": "说明包含、额外和不提供的内容，以及必要成本。",
+              "evidence": "顾客价值、实际投入与业务约定。",
+              "decision": "初步可经营，不只计算AI生成费用。",
+              "related": [
+                "repeat-labor"
+              ]
+            },
+            {
+              "id": "definition-exit",
+              "label": "期待变化、不适合或未达预期时怎么办？",
+              "kind": "产品边界",
+              "aim": "预设复核、调整、另行评估与退出的边界。",
+              "evidence": "最新需求、实际结果、剩余容量与约定。",
+              "decision": "不靠无限追加服务或保证提分解决分歧。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mechanism",
+      "label": "课程与交付",
+      "title": "设计：这些价值怎样真正发生",
+      "purpose": "把目标、内容、学习过程与职责连起来；在试做中完善方案。",
+      "artifact": "可执行的课程、材料与交付方案",
+      "scene": "各项设计能解释为何有助于目标，教师获得交付所需支持。",
+      "exit": "能制作和使用完整样板；关键假设与尚不能解决的问题清楚。",
+      "topics": [
+        {
+          "id": "mechanism-goals",
+          "label": "目标与内容依据",
+          "questions": [
+            {
+              "id": "mechanism-goal-tasks",
+              "label": "目标怎样拆成要掌握的内容、任务与程度？",
+              "kind": "实现问题",
+              "aim": "从目标反推必要能力，不以章节学过替代掌握。",
+              "evidence": "教材、任务要求、知识依赖与学生实际作答。",
+              "decision": "目标、内容和检查任务对应，可说明取舍。"
+            },
+            {
+              "id": "mechanism-resources",
+              "label": "图谱、题源与教材怎样成为可靠依据？",
+              "kind": "实现问题",
+              "aim": "核实资源的适用性、前置关系与真实考查任务。",
+              "evidence": "独立审查、原题与实际教学表现。",
+              "decision": "资源可用且有边界，不把现有图谱视为最终真理。",
+              "related": [
+                "operation-map-check"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mechanism-planning",
+          "label": "课程规划",
+          "questions": [
+            {
+              "id": "mechanism-plan-goal",
+              "label": "目标、当前基础与课时怎样转成全程规划？",
+              "kind": "实现问题",
+              "aim": "确定内容顺序、程度、时间取舍与阶段检查。",
+              "evidence": "学生证据、前置依赖、学校进度和可用容量。",
+              "decision": "得到可实施的初版规划；制作时同步形成AI规则与检查办法。",
+              "related": [
+                "production-plan-check"
+              ],
+              "method": true
+            },
+            {
+              "id": "mechanism-replan",
+              "label": "学情与学校进度变化时，怎样调整而不丢总目标？",
+              "kind": "实现问题",
+              "aim": "区分局部调整与整体重规划，核算剩余内容和时间。",
+              "evidence": "已学与未达内容、学校变化及最新作答。",
+              "decision": "调整有理由和检查位置，不只追赶最近一章。"
+            },
+            {
+              "id": "production-plan-check",
+              "label": "不等到考试，怎样先检查规划本身？",
+              "kind": "规划评价",
+              "aim": "检查目标覆盖、前置、顺序、程度、课时与验收是否一致。",
+              "evidence": "学生证据、目标拆解、取舍理由与可用时间。",
+              "decision": "形成规划直接审查办法，同时保留真实效果验证。",
+              "related": [
+                "prototype-layers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mechanism-lessons",
+          "label": "每课讲义与练习",
+          "questions": [
+            {
+              "id": "mechanism-lesson",
+              "label": "题链怎样帮助学生从尝试走到独立完成？",
+              "kind": "教学实现",
+              "aim": "对应实际卡点组织讲解、练习与独立检查。",
+              "evidence": "任务依赖、独立解题、学生尝试与提示情况。",
+              "decision": "每题有教学作用和递进关系，不只是拼题型。",
+              "method": true
+            },
+            {
+              "id": "mechanism-method",
+              "label": "怎样让学生理解方法，而不只记住窄套路？",
+              "kind": "教学实现",
+              "aim": "呈现理由、适用条件与可迁移思路。",
+              "evidence": "变式作答、学生解释与未见任务表现。",
+              "decision": "明确要理解和迁移什么，不把换数字当作全部训练。"
+            },
+            {
+              "id": "mechanism-practice",
+              "label": "有限练习怎样覆盖目标、检查与必要回练？",
+              "kind": "教学实现",
+              "aim": "按目标与证据选题，兼顾负担、遗漏与旧弱项。",
+              "evidence": "覆盖关系、完成时间、错误与延后表现。",
+              "decision": "题量由任务决定，每道回练都有待验证的问题。",
+              "method": true
+            }
+          ]
+        },
+        {
+          "id": "mechanism-feedback",
+          "label": "掌握检查与调整",
+          "questions": [
+            {
+              "id": "mechanism-check",
+              "label": "怎样区分当场做对、独立掌握与保持迁移？",
+              "kind": "学习检查",
+              "aim": "设计匹配目标的独立、延后和迁移任务。",
+              "evidence": "作答过程、提示依赖与后续表现。",
+              "decision": "掌握结论有条件和依据，不只依据一次正确率。"
+            },
+            {
+              "id": "mechanism-feedback-route",
+              "label": "课堂、作业与考试结果怎样改变后续安排？",
+              "kind": "调整机制",
+              "aim": "从题目表现定位问题，再选择补讲、回练或路线调整。",
+              "evidence": "原题、实际作答、发生时间与提示情况。",
+              "decision": "每项未解决问题有处理和复验去向。"
+            },
+            {
+              "id": "operation-map-check",
+              "label": "反复学不会时，要不要检查目标或图谱？",
+              "kind": "实现方案修订",
+              "aim": "检验能力拆解、前置关系与任务组织，而非只增加练习。",
+              "evidence": "实际卡点、执行情况、学科审查与重复证据。",
+              "decision": "区分个体调整与通用依据修订；证据不足时先验证。",
+              "related": [
+                "mechanism-goal-tasks",
+                "repeat-updates"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mechanism-engage",
+          "label": "学习投入与跟进",
+          "questions": [
+            {
+              "id": "mechanism-willing",
+              "label": "哪些设计可能支持学生愿意尝试并持续投入？",
+              "kind": "价值实现假设",
+              "aim": "研究任务难度、选择、进步反馈与支持，而不只依靠个人魅力。",
+              "evidence": "价值场景、真实尝试及前后行为变化。",
+              "decision": "有待验证的机制，不预先把激将、奖励或游戏化当作通用解。",
+              "related": [
+                "value-willing"
+              ]
+            },
+            {
+              "id": "mechanism-trust",
+              "label": "怎样减少家长负担，又让学习任务实际推进？",
+              "kind": "价值实现假设",
+              "aim": "按具体负担设计任务落实、异常处理与必要沟通。",
+              "evidence": "家长原本承担的事与真实交付过程。",
+              "decision": "跟进与沟通有明确的价值依据、负担和服务边界。",
+              "related": [
+                "value-relief"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mechanism-roles",
+          "label": "交付分工与前提",
+          "questions": [
+            {
+              "id": "mechanism-teacher",
+              "label": "教师只做监督、讲解、反馈，需要哪些资料和能力？",
+              "kind": "当前产品的交付设计",
+              "aim": "明确必要学科能力、上手支持与执行资料。",
+              "evidence": "真实试做、讲解、检查和反馈任务。",
+              "decision": "教师不自行规划选题；最低能力和必要训练可检验。",
+              "related": [
+                "repeat-delivery"
+              ]
+            },
+            {
+              "id": "mechanism-support",
+              "label": "其他决策与异常由系统或教研怎样承接？",
+              "kind": "交付成立条件",
+              "aim": "明确规划、选题、审核、修订与疑难处理的责任。",
+              "evidence": "实际任务、已有能力、支持需求与成本。",
+              "decision": "责任、能力与疑难处理路径明确，外部依赖有承接方式。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prototype",
+      "label": "样板与评价",
+      "title": "做出完整样板，并判断哪里成立",
+      "purpose": "一边做产品，一边检查方案、实际执行、学习与顾客价值。",
+      "artifact": "样板结果、问题判断与修订方向",
+      "scene": "知道做出了什么、真实发生了什么，以及下一步该改什么。",
+      "exit": "通过、失败与未知分开；结果用于修正对应设计，而非一律归因于教师或规划。",
+      "topics": [
+        {
+          "id": "prototype-sample",
+          "label": "完整样板",
+          "questions": [
+            {
+              "id": "prototype-cycle",
+              "label": "哪段完整交付足以检验这款产品？",
+              "kind": "样板设计",
+              "aim": "覆盖必要的规划、教学、检查和一次实际调整。",
+              "evidence": "价值出现所需的过程、时间与目标顾客条件。",
+              "decision": "样板不是未使用的讲义，也不要求先建完整平台。"
+            },
+            {
+              "id": "prototype-assume",
+              "label": "这个样板优先检验哪项关键不确定性？",
+              "kind": "验证取舍",
+              "aim": "选择会影响产品成立的假设，而非最方便展示的功能。",
+              "evidence": "影响程度、现有证据与验证成本。",
+              "decision": "先明确问题与判据，再选择试用方式。"
+            }
+          ]
+        },
+        {
+          "id": "prototype-quality",
+          "label": "分层评价",
+          "questions": [
+            {
+              "id": "prototype-layers",
+              "label": "怎样分别看方案质量、实际执行与学习结果？",
+              "kind": "评价方法",
+              "aim": "分别审查规划材料、实施情况和独立学习表现。",
+              "evidence": "产物审查、课堂过程、作答与延后结果。",
+              "decision": "不只用成绩倒推规划，也不以审查合格证明学生学会。",
+              "related": [
+                "production-plan-check",
+                "mechanism-check"
+              ]
+            },
+            {
+              "id": "prototype-value",
+              "label": "顾客觉得值，与学生真正受益是否一致？",
+              "kind": "价值验证",
+              "aim": "同时检验价值画面、顾客感受与实际学习变化。",
+              "evidence": "真实使用、具体经历与匹配目标的任务。",
+              "decision": "满意、投入和学会分别判断，不互相替代。",
+              "related": [
+                "needs-stories",
+                "definition-scene"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "prototype-evidence",
+          "label": "方法能证明什么",
+          "questions": [
+            {
+              "id": "prototype-rule-test",
+              "label": "规则审查、AI模拟与真实试用分别能证明什么？",
+              "kind": "验证方法",
+              "aim": "区分逻辑检查、操作可用与实际学习效果的证据。",
+              "evidence": "测试条件、错误、真实教师使用和学生表现。",
+              "decision": "模拟只能回答部分问题，不能替代真实交付。",
+              "related": [
+                "repeat-delivery"
+              ]
+            },
+            {
+              "id": "prototype-attribution",
+              "label": "一次成绩或体验变化能支持多大的判断？",
+              "kind": "证据判断",
+              "aim": "考虑样本、执行、学校学习及其他影响。",
+              "evidence": "过程、前后条件、反例与多次表现。",
+              "decision": "结论有适用范围，不把单个故事推为普遍规律。"
+            }
+          ]
+        },
+        {
+          "id": "prototype-revise",
+          "label": "问题与改进",
+          "questions": [
+            {
+              "id": "prototype-fail",
+              "label": "问题出在价值理解、方案、材料，还是执行？",
+              "kind": "问题定位",
+              "aim": "先对照预期与实际差异，再提出可验证原因。",
+              "evidence": "原始材料、真实过程、顾客经历与结果。",
+              "decision": "指出需要修订的设计，不直接归责个人或一律补题。",
+              "related": [
+                "position-main",
+                "mechanism-feedback-route"
+              ]
+            },
+            {
+              "id": "prototype-rule-problem",
+              "label": "需要增补规则时，它到底解决哪个具体问题？",
+              "kind": "研制方法检查",
+              "aim": "说明问题、方案来由、预期改变与验证方法。",
+              "evidence": "真实失败、必要条件或明确标注的假设。",
+              "decision": "规则为问题服务，试用后可保留、修改或撤回。",
+              "method": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "repeat",
+      "label": "复用与持续",
+      "title": "检验已形成的产品与资料能复用到哪里",
+      "purpose": "复用从样板制作中发生，再用不同对象检验边界与成本。",
+      "artifact": "可复用部分、定制条件与经营边界",
+      "scene": "换对象后知道哪些沿用、哪些调整、哪里仍需支持。",
+      "exit": "复用有前提、真实依据和成本边界，不把可再次调用等同于普遍有效。",
+      "topics": [
+        {
+          "id": "repeat-variation",
+          "label": "固定与定制",
+          "questions": [
+            {
+              "id": "repeat-config",
+              "label": "哪些原则固定，哪些内容必须因人而变？",
+              "kind": "复用边界",
+              "aim": "区分质量底线与目标、内容、程度、顺序的定制项。",
+              "evidence": "不同样板的共同点、差异与调整后的结果。",
+              "decision": "复用有条件，不把定制等同于任意拼装。"
+            },
+            {
+              "id": "repeat-difference",
+              "label": "换学生、目标或地区后，哪些前提可能失效？",
+              "kind": "适用性验证",
+              "aim": "检查基础、学校进度、考试要求与可用时间的变化。",
+              "evidence": "新对象的真实条件与原样板的必要前提。",
+              "decision": "知道可配置、需重研和超出范围的部分。"
+            }
+          ]
+        },
+        {
+          "id": "repeat-teacher",
+          "label": "换教师交付",
+          "questions": [
+            {
+              "id": "repeat-delivery",
+              "label": "完成必要训练的新教师能独立交付吗？",
+              "kind": "交付复现",
+              "aim": "检验真实教师能否使用资料完成讲解、检查与反馈。",
+              "evidence": "未参与设计的教师实际试教与使用。",
+              "decision": "不靠设计者持续救场，也不要求教师补做规划选题。",
+              "related": [
+                "mechanism-teacher"
+              ]
+            },
+            {
+              "id": "repeat-help",
+              "label": "哪些地方仍依赖原设计者的解释与补救？",
+              "kind": "复现缺口",
+              "aim": "定位隐性知识、表达缺失与必要支持。",
+              "evidence": "求助、误解、偏差、返工与额外耗时。",
+              "decision": "有补充资料、支持或边界调整，不只要求教师更努力。"
+            }
+          ]
+        },
+        {
+          "id": "repeat-assets",
+          "label": "已沉淀的生产资料",
+          "questions": [
+            {
+              "id": "repeat-assets-question",
+              "label": "样板制作已经留下哪些可再次使用的资料？",
+              "kind": "复用检查",
+              "aim": "核实输入要求、规则、资源、模板和检查办法。",
+              "evidence": "制作样板时实际使用并修订过的资料。",
+              "decision": "可再次调用，适用前提与仍需人工判断的部分清楚。",
+              "method": true
+            },
+            {
+              "id": "repeat-rule-bounds",
+              "label": "哪些规则已有依据，哪些仍只适用于当前样板？",
+              "kind": "规则适用边界",
+              "aim": "区分可操作、个案有效与跨样板已有支持。",
+              "evidence": "来源、使用表现、反例与不同条件下的检验。",
+              "decision": "规则的成熟程度可说明，不以数量或自动运行时间证明质量。"
+            }
+          ]
+        },
+        {
+          "id": "repeat-change",
+          "label": "修订与追溯",
+          "questions": [
+            {
+              "id": "repeat-updates",
+              "label": "哪些问题只改当前课，哪些应改通用资料？",
+              "kind": "复用资料修订",
+              "aim": "区分个体配置、目标图谱、题源、规则与产品定义问题。",
+              "evidence": "影响范围、原始证据与重复出现的条件。",
+              "decision": "改动进入对应对象，不把所有新发现写成通用约束。",
+              "related": [
+                "operation-map-check",
+                "prototype-fail"
+              ]
+            },
+            {
+              "id": "production-update",
+              "label": "通用资料变化后，哪些现有课程需要重新检查？",
+              "kind": "版本与影响",
+              "aim": "追踪变更理由、适用范围与已有约定。",
+              "evidence": "规则版本、生产记录和受影响材料。",
+              "decision": "有复核与更新去向，不静默覆盖历史记录。"
+            }
+          ]
+        },
+        {
+          "id": "repeat-cost",
+          "label": "成本与持续经营",
+          "questions": [
+            {
+              "id": "repeat-labor",
+              "label": "一份完整交付的真实成本有多高？",
+              "kind": "经营成立条件",
+              "aim": "统计生成、审核、授课、支持与返工。",
+              "evidence": "实际投入、收入与异常处理记录。",
+              "decision": "知道成本分布与适用价格，而非只看生成速度。"
+            },
+            {
+              "id": "repeat-capacity",
+              "label": "增加学生后，哪里先成为瓶颈或使价值下降？",
+              "kind": "持续性验证",
+              "aim": "识别教师、教研支持、资源和系统的限制。",
+              "evidence": "真实负载、等待、质量变化与续购退出原因。",
+              "decision": "能决定先修哪里、何时不宜扩大。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "method": {
+    "title": "样板制作与生产资料同步形成",
+    "summary": "规则 → AI制作 → 核验修订 → 可复用资料",
+    "steps": [
+      {
+        "label": "明确要求与规则",
+        "text": "为当前要产出的规划、讲义或作业，澄清目标、输入与约束。"
+      },
+      {
+        "label": "AI产出",
+        "text": "依据规则与资料制作当前样板；不以先建完整平台为前提。"
+      },
+      {
+        "label": "核验修订",
+        "text": "审查产物，结合使用发现修正规则与结果。"
+      },
+      {
+        "label": "可复用资料",
+        "text": "保留实际用过的规则、输入要求、资源与检查办法。"
+      }
+    ],
+    "example": "例如课程规划：目标、作答证据与课时 → 规划规则 → AI初稿 → 直接审查与修订。一份规划试做完成时，也已形成后续制作可用的规则与检查办法。",
+    "boundary": "能再次调用，与已证明适用于其他学生，是两个不同判断。后续样板继续检验边界。"
+  },
+  "discussions": [
+    {
+      "id": "meeting-value",
+      "date": "10月28日、11月4日",
+      "topic": "顾客觉得值、不值、无感的故事",
+      "nature": "价值研究",
+      "meaning": "细化价值的具体表现，必要时修正价值认识；不是直接要求增加回访功能。",
+      "targets": [
+        "needs-stories"
+      ]
+    },
+    {
+      "id": "meeting-expectation",
+      "date": "11月4日",
+      "topic": "家长在不同阶段期待的变化",
+      "nature": "价值研究",
+      "meaning": "研究价值侧重与适用阶段；具体是否需要服务动作，要再从实现问题推导。",
+      "targets": [
+        "needs-change"
+      ]
+    },
+    {
+      "id": "meeting-planning",
+      "date": "11月4日",
+      "topic": "用图谱、旧卷和课时生成全程规划",
+      "nature": "实现设计",
+      "meaning": "讨论规划怎样产出，属于课程设计方案；制作同时沉淀AI规则。",
+      "targets": [
+        "mechanism-plan-goal"
+      ]
+    },
+    {
+      "id": "meeting-ai-rules",
+      "date": "11月4日",
+      "topic": "AI规则解决什么问题、怎样得来",
+      "nature": "研制方法",
+      "meaning": "要求说明问题与方案来由。生产规则伴随试做形成，不是后期独立工序。",
+      "targets": [
+        "prototype-rule-problem"
+      ],
+      "method": true
+    },
+    {
+      "id": "meeting-plan-quality",
+      "date": "11月4日",
+      "topic": "怎样直接评价规划本身",
+      "nature": "评价问题",
+      "meaning": "规划是评价对象，分层证据是评价方法；仍需实际交付检验学习效果。",
+      "targets": [
+        "production-plan-check",
+        "prototype-layers"
+      ]
+    },
+    {
+      "id": "meeting-transfer",
+      "date": "11月4日",
+      "topic": "会套路不等于有迁移能力",
+      "nature": "教学实现",
+      "meaning": "影响目标、题链与讲解方式，不由此单列一项顾客购买的内容。",
+      "targets": [
+        "mechanism-method"
+      ]
+    },
+    {
+      "id": "meeting-teacher",
+      "date": "11月4日",
+      "topic": "教师会做题，不一定能讲清楚",
+      "nature": "交付前提",
+      "meaning": "确认本产品所需的最低能力与上手支持；整个教师队伍建设不展开为本项目。",
+      "targets": [
+        "mechanism-teacher",
+        "repeat-delivery"
+      ]
+    },
+    {
+      "id": "meeting-graph",
+      "date": "11月4日",
+      "topic": "学得会的结果反过来检验图谱",
+      "nature": "实现方案修订",
+      "meaning": "检验目标、前置与任务组织是否合理，不能所有问题都只追加练习。",
+      "targets": [
+        "operation-map-check"
+      ]
+    },
+    {
+      "id": "meeting-simulation",
+      "date": "11月4日",
+      "topic": "让AI模拟新教师运行规则",
+      "nature": "验证方法",
+      "meaning": "能检查部分逻辑与可操作性，不能充当真实教师和学生使用的证据。",
+      "targets": [
+        "prototype-rule-test"
+      ]
+    },
+    {
+      "id": "meeting-organization",
+      "date": "11月4日",
+      "topic": "公司组织、区域业务与人事管理",
+      "nature": "图外工作",
+      "meaning": "只在影响本产品资源、能力或交付责任时记录依赖，不把整套公司工作装进总图。",
+      "targets": []
+    },
+    {
+      "id": "meeting-reporting",
+      "date": "11月4日",
+      "topic": "给领导看的内容要简洁、讲清问题",
+      "nature": "汇报方式",
+      "meaning": "约束本图和汇报的表达；不由此推出新的课程模块或顾客服务。",
+      "targets": []
+    }
+  ],
+  "legacyStages": {
+    "scope": "position",
+    "needs": "position",
+    "production": "mechanism",
+    "operation": "prototype"
+  },
+  "legacyTopics": {
+    "needs-listening": "value-evidence",
+    "production-plan": "mechanism-planning",
+    "operation-map": "mechanism-feedback",
+    "mechanism-readiness": "mechanism-roles",
+    "repeat-process": "repeat-teacher",
+    "scope-interfaces": "mechanism-roles",
+    "production-readers": "definition-experience"
+  }
+}</script>
+  <script id="lucide-icons" type="application/json">{"ChevronRight":[["path",{"d":"m9 18 6-6-6-6"}]]}</script>
+  <script>
+    'use strict';
+    /* ChevronRight icon data from Lucide v1.8.0.
+     * ISC License: Copyright (c) 2026 Lucide Icons and Contributors.
+     * Permission to use, copy, modify, and/or distribute this software for any
+     * purpose with or without fee is hereby granted, provided that the above
+     * copyright notice and this permission notice appear in all copies.
+     * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+     * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+     * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+     * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+     * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+     * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+     * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+     * ChevronRight derives from Feather, MIT License.
+     * Copyright (c) 2013-present Cole Bemis.
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+     * SOFTWARE.
+     */
+    const DATA=JSON.parse(document.getElementById('project-data').textContent);
+    const ICONS=JSON.parse(document.getElementById('lucide-icons').textContent);
+    const $=id=>document.getElementById(id);
+    const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const stages=DATA.stages;
+    const byId=new Map(stages.map((stage,index)=>[stage.id,{...stage,index}]));
+    const questionIndex=new Map(stages.flatMap(stage=>stage.topics.flatMap(topic=>topic.questions.map(question=>[question.id,{stage,topic,question}]))));
+    const topicIndex=new Map(stages.flatMap(stage=>stage.topics.map(topic=>[topic.id,{stage,topic}])));
+    const navQuestions=['为谁做什么','为什么觉得值','具体交付什么','怎样真正做到','凭什么判断','能复用到哪里'];
+    const SVG_NS='http://www.w3.org/2000/svg';
+    const guide=$('decision-guide');
+    const memories=new Map();
+    let currentId=stages[0].id,expandedTopic=null,selectedQuestion=null,frame=0;
+    function icon(){
+      const svg=document.createElementNS(SVG_NS,'svg');
+      for(const [key,value] of Object.entries({viewBox:'0 0 24 24',fill:'none',stroke:'currentColor','stroke-width':'1.7','stroke-linecap':'round','stroke-linejoin':'round','aria-hidden':'true',class:'chevron'}))svg.setAttribute(key,value);
+      for(const [tag,attrs] of ICONS.ChevronRight){const part=document.createElementNS(SVG_NS,tag);for(const [key,value] of Object.entries(attrs))part.setAttribute(key,value);svg.appendChild(part);}
+      return svg;
+    }
+    function announce(text){$('announcement').textContent=text;}
+    function routeFor(id){const item=questionIndex.get(id);return item?`#${item.stage.id}/${item.topic.id}/${item.question.id}`:null;}
+    function questionLinks(ids){return ids.map(id=>questionIndex.get(id)).filter(Boolean).map(({question})=>`<a href="${routeFor(question.id)}">${escapeHTML(question.label)}</a>`).join('');}
+    function writeHash(){const parts=[currentId];if(expandedTopic)parts.push(expandedTopic);if(selectedQuestion)parts.push(selectedQuestion);history.replaceState(null,'',`#${parts.join('/')}`);}
+    $('mainline').innerHTML=stages.map((stage,index)=>`<li><button class="stage-button" type="button" data-stage="${stage.id}" aria-controls="stage-title"><span class="stage-num">${String(index+1).padStart(2,'0')}</span><span class="stage-label">${escapeHTML(stage.label)}</span><span class="stage-question">${navQuestions[index]}</span></button></li>`).join('');
+    for(const holder of document.querySelectorAll('[data-chevron]'))holder.replaceWith(icon());
+    $('method-flow').textContent=DATA.method.summary;$('method-title').textContent=DATA.method.title;
+    $('method-steps').innerHTML=DATA.method.steps.map(step=>`<li class="method-step"><strong>${escapeHTML(step.label)}</strong><p>${escapeHTML(step.text)}</p></li>`).join('');
+    $('method-example').textContent=DATA.method.example;$('method-boundary').textContent=DATA.method.boundary;
+    $('discussion-rows').innerHTML=DATA.discussions.map(item=>`<tr data-discussion="${item.id}"><td><span class="discussion-topic">${escapeHTML(item.topic)}</span><span class="discussion-date">${escapeHTML(item.date)}</span></td><td><span class="discussion-nature">${escapeHTML(item.nature)}</span>${escapeHTML(item.meaning)}</td><td class="discussion-links">${questionLinks(item.targets)}${item.method?'<a href="#method">伴随样板的生产方式</a>':''}${!item.targets.length&&!item.method?'<span class="discussion-outside">图外：不新增产品节点</span>':''}</td></tr>`).join('');
+    function renderStage(id,{restore=true,write=true}={}){
+      if(!byId.has(id))return;
+      memories.set(currentId,{expandedTopic,selectedQuestion});currentId=id;
+      const stage=byId.get(id),saved=restore?memories.get(id):null;
+      expandedTopic=saved?.expandedTopic||null;selectedQuestion=saved?.selectedQuestion||null;
+      $('map').classList.toggle('is-dense',stage.topics.length>4);
+      for(const button of document.querySelectorAll('[data-stage]')){if(button.dataset.stage===id)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');}
+      $('stage-kicker').textContent=`设计问题 ${String(stage.index+1).padStart(2,'0')} / ${String(stages.length).padStart(2,'0')}`;
+      $('stage-title').textContent=stage.title;$('stage-purpose').textContent=stage.purpose;$('stage-deliverable').textContent=stage.artifact;
+      $('origin-step').textContent=`产品设计问题 ${String(stage.index+1).padStart(2,'0')}`;$('origin-title').textContent=stage.label;
+      $('stage-scene').textContent=stage.scene;$('stage-exit').textContent=stage.exit;
+      $('guide-home').appendChild(guide);
+      $('topics').innerHTML=stage.topics.map(topic=>`<li class="topic-item" id="item-${topic.id}"><button class="topic-button" type="button" id="button-${topic.id}" data-topic="${topic.id}" aria-expanded="false" aria-controls="questions-${topic.id}"><strong>${escapeHTML(topic.label)}</strong></button><ul class="questions" id="questions-${topic.id}" aria-label="${escapeHTML(topic.label)}的子问题" hidden>${topic.questions.map(question=>`<li><button class="question-button" type="button" id="button-${question.id}" data-question="${question.id}" aria-expanded="false" aria-controls="decision-guide"><span>${escapeHTML(question.label)}</span><i class="question-dot" aria-hidden="true"></i></button></li>`).join('')}</ul></li>`).join('');
+      for(const button of document.querySelectorAll('[data-topic]'))button.appendChild(icon());
+      applyExpansion();if(write)writeHash();scheduleMap();
+    }
+    function applyExpansion(){
+      for(const button of document.querySelectorAll('[data-topic]')){const on=button.dataset.topic===expandedTopic;button.setAttribute('aria-expanded',String(on));$(`questions-${button.dataset.topic}`).hidden=!on;}
+      $('outcome-preview').hidden=Boolean(expandedTopic);
+      for(const button of document.querySelectorAll('[data-question]'))button.setAttribute('aria-expanded',String(button.dataset.question===selectedQuestion));
+      const question=questionIndex.get(selectedQuestion)?.question;guide.hidden=!question;
+      if(question){$('question-title').textContent=question.label;$('question-kind').textContent=`讨论性质：${question.kind}`;$('question-aim').textContent=question.aim;$('question-evidence').textContent=question.evidence;$('question-decision').textContent=question.decision;}
+      const links=question?questionLinks(question.related||[])+(question.method?'<a href="#method">伴随样板的生产方式</a>':''):'';
+      $('guide-related').hidden=!links;$('guide-related').innerHTML=links?'<span>关联问题</span>'+links:'';
+      positionGuide();scheduleMap();
+    }
+    function positionGuide(){const parent=selectedQuestion&&matchMedia('(max-width:819px)').matches?$(`button-${selectedQuestion}`)?.closest('li'):$('guide-home');const target=parent||$('guide-home');if(guide.parentElement!==target)target.appendChild(guide);}
+    function toggleTopic(id){expandedTopic=expandedTopic===id?null:id;selectedQuestion=null;applyExpansion();writeHash();const topic=topicIndex.get(id).topic;announce(expandedTopic?`${topic.label}，展开${topic.questions.length}个问题`:`收起${topic.label}`);}
+    function toggleQuestion(id){selectedQuestion=selectedQuestion===id?null:id;applyExpansion();writeHash();announce(selectedQuestion?`已显示：${questionIndex.get(id).question.label}`:'收起问题说明');}
+    function scheduleMap(){if(frame)cancelAnimationFrame(frame);frame=requestAnimationFrame(drawMap);}
+    function drawMap(){
+      frame=0;const map=$('map'),svg=$('connections');if(matchMedia('(max-width:819px)').matches){svg.replaceChildren();return;}
+      const mapRect=map.getBoundingClientRect(),origin=$('origin').getBoundingClientRect(),topics=$('topics').getBoundingClientRect();
+      const gap=parseFloat(getComputedStyle(map).columnGap),left=topics.right-mapRect.left+gap;
+      map.style.setProperty('--questions-w',`${Math.max(180,mapRect.width-left)}px`);
+      if(expandedTopic){const item=$(`item-${expandedTopic}`),group=$(`questions-${expandedTopic}`),button=$(`button-${expandedTopic}`),itemRect=item.getBoundingClientRect(),buttonRect=button.getBoundingClientRect(),height=group.getBoundingClientRect().height;const top=Math.max(12,Math.min(mapRect.height-height-12,buttonRect.top-mapRect.top+buttonRect.height/2-height/2));group.style.setProperty('--questions-top',`${top-(itemRect.top-mapRect.top)}px`);}
+      svg.setAttribute('viewBox',`0 0 ${mapRect.width} ${mapRect.height}`);const paths=[];
+      const connect=(a,b,selected)=>{const sx=a.right-mapRect.left,sy=a.top-mapRect.top+a.height/2,tx=b.left-mapRect.left,ty=b.top-mapRect.top+b.height/2,mx=(sx+tx)/2;const path=document.createElementNS(SVG_NS,'path');path.setAttribute('d',`M${sx} ${sy} C${mx} ${sy},${mx} ${ty},${tx} ${ty}`);if(selected)path.setAttribute('class','selected-edge');paths.push(path);};
+      for(const button of document.querySelectorAll('[data-topic]'))connect(origin,button.getBoundingClientRect(),button.dataset.topic===expandedTopic);
+      if(expandedTopic){const parent=$(`button-${expandedTopic}`).getBoundingClientRect();for(const button of document.querySelectorAll(`#questions-${expandedTopic} [data-question]`))connect(parent,button.getBoundingClientRect(),button.dataset.question===selectedQuestion);}
+      svg.replaceChildren(...paths);
+    }
+    function revealSpecial(id){const details=$(id==='method'?'production-method':'discussion-locator');details.open=true;requestAnimationFrame(()=>{const summary=details.querySelector('summary');summary.focus({preventScroll:true});summary.scrollIntoView({block:'start'});});}
+    function fromHash(){
+      let parts=[];try{parts=decodeURIComponent(location.hash.slice(1)).split('/');}catch{}
+      if(parts[0]==='method'||parts[0]==='discussions'){if(!$('topics').children.length)renderStage(currentId,{write:false});revealSpecial(parts[0]);return;}
+      // Retained question IDs take precedence over outdated category paths.
+      const indexedQuestion=parts.length>2?questionIndex.get(parts[2]):null;
+      const indexedTopic=topicIndex.get(DATA.legacyTopics[parts[1]]||parts[1]);
+      const stage=indexedQuestion?.stage||indexedTopic?.stage||byId.get(parts[0])||byId.get(DATA.legacyStages[parts[0]])||stages[0];
+      renderStage(stage.id,{restore:false,write:false});
+      const topic=indexedQuestion?.topic||(indexedTopic?.stage.id===stage.id?indexedTopic.topic:null);
+      expandedTopic=topic?.id||null;selectedQuestion=indexedQuestion?.question.id||null;applyExpansion();writeHash();
+      const questionId=selectedQuestion;
+      if(questionId)requestAnimationFrame(()=>{if(selectedQuestion!==questionId)return;const button=$(`button-${questionId}`);button?.focus({preventScroll:true});button?.scrollIntoView({block:'start'});});
+    }
+    $('mainline').addEventListener('click',event=>{const button=event.target.closest('[data-stage]');if(!button)return;renderStage(button.dataset.stage);announce(byId.get(currentId).label);});
+    $('topics').addEventListener('click',event=>{const topic=event.target.closest('[data-topic]'),question=event.target.closest('[data-question]');if(topic)toggleTopic(topic.dataset.topic);else if(question)toggleQuestion(question.dataset.question);});
+    document.addEventListener('click',event=>{const anchor=event.target.closest('a[href^="#"]');if(anchor&&anchor.hash===location.hash){event.preventDefault();fromHash();}});
+    window.addEventListener('hashchange',fromHash);window.addEventListener('resize',()=>{positionGuide();scheduleMap();});
+    window.addEventListener('beforeprint',()=>{$('guide-home').appendChild(guide);drawMap();});window.addEventListener('afterprint',()=>{positionGuide();scheduleMap();});
+    new ResizeObserver(scheduleMap).observe($('map'));document.fonts.ready.then(scheduleMap);fromHash();
+  </script>
+</body>
+</html>
